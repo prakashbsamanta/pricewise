@@ -10,7 +10,9 @@ const isValidAmazonProductUrl = (url: string) => {
     if (
       hostname.includes("amazon.com") ||
       hostname.endsWith("amazon") ||
-      hostname.includes("amazon.")
+      hostname.includes("amazon.") ||
+      hostname.includes("amzn.") ||
+      hostname.includes("amzn")
     ) {
       return true;
     }
@@ -55,7 +57,7 @@ const SearchBar = () => {
       <button
         type="submit"
         className="searchbar-btn"
-        // disabled={searchPrompt === ""}
+        disabled={searchPrompt === ""}
       >
         {isLoading ? "Searching..." : "Search"}
       </button>
