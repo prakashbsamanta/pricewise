@@ -60,10 +60,13 @@ export async function scrapeAmazonProduct(url: string) {
       lowestPrice: Number(currentPrice),
       highestPrice: Number(originalPrice),
       averagePrice: Number(currentPrice),
-      discountRate: discountPercentage,
-      discription: "",
+      discountRate: Number(discountPercentage),
+      description: "",
       categories: "",
       isOutOfStock: outOfStock,
+      category: "category",
+      reviewsCount: 100,
+      stars: 4.99,
     };
     return data;
   } catch (error: any) {
