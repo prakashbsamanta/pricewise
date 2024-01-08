@@ -6,6 +6,8 @@ import { connectToDB } from "../mongoose";
 import { scrapeAmazonProduct } from "../scraper";
 import { getAveragePrice, getHighestPrice, getLowestPrice } from "../utils";
 import * as logger from "../logger";
+import { User } from "@/types";
+import { generateEmailBody, sendEmail } from "../nodemailer";
 
 export async function scrapeAndStoreProduct(productUrl: string) {
   if (!productUrl) return;
@@ -89,5 +91,31 @@ export async function getSimilarProducts(productId: string) {
     return similarProducts;
   } catch (error) {
     logger.logError(`${error}`);
+  }
+}
+
+export async function addUserEmailToProduct(
+  productId: string,
+  userEmail: string
+) {
+  try {
+    //send our first email
+    const product = await Product.findById(productId);
+    console.log(product);
+    if (!product) return null;
+    const userExists = product.users.includes(userEmail);
+    console.log("userEmail: ", userEmail);
+    console.log("userEmailExists: ", userExists);
+    if (!userExists) {
+      product.users.push(userEmail);
+
+      await product.save();
+
+      const emailContent = await generateEmailBody(product, "WELCOME");
+
+      await sendEmail(emailContent, [userEmail]);
+    }
+  } catch (error) {
+    logger.logError(`Error while adding userEmail to product: ${error}`);
   }
 }
