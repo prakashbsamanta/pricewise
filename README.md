@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pricewise - Amazon Price Scraper and Tracker
 
-## Getting Started
+Pricewise is a web application designed to help users track prices of products on Amazon.in (India). It serves as a price scraper and tracker, allowing users to conveniently monitor price changes for their favorite products.
 
-First, run the development server:
+**Please Note:** The entire app is currently in demo and may undergo changes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Full-Stack Framework:** [![Next.js with TypeScript](https://img.shields.io/badge/Full--Stack-Next.js%20with%20TypeScript-000000?logo=next.js&logoColor=white&labelColor=007ACC)](https://nextjs.org/)
+- **Database:** [![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+- **Scraping:** [![Bright Data](https://img.shields.io/badge/Scraping-Bright%20Data-FF7139?logo=brightdata&logoColor=white)](https://brightdata.com/)
+- **Cron Job Scheduler:** Hosted on [cron-job.org](https://cron-job.org)
+- **Others:** [![npm](https://img.shields.io/badge/Others-npm-CB3837?logo=npm&logoColor=white)](https://www.npmjs.com/), [![Git](https://img.shields.io/badge/Others-Git-F05032?logo=git&logoColor=white)](https://git-scm.com/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Search Amazon.in Prices:** Easily search for product prices on Amazon.in.
 
-## Learn More
+- **Price Tracking:** Track the prices of specific products by providing your email address. Pricewise regularly checks for price changes and sends email notifications when detected.
 
-To learn more about Next.js, take a look at the following resources:
+## Todo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ ] Implement user authentication for a personalized experience.
+- [ ] Enhance email notification system.
+- [ ] Improve user interface for a more intuitive experience.
+- [ ] Expand supported regions for price tracking.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## How to Start Locally
 
-## Deploy on Vercel
+1. Clone the repository:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/your-username/pricewise.git
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+2. Install dependencies:
+
+   ```bash
+   cd pricewise
+   npm install
+   ```
+
+3. Set up environment variables:
+
+   Create a `.env` file in the root directory and add the following:
+
+   ```plaintext
+   EMAIL_USERNAME=send_email_from_this_user
+   EMAIL_PASSWORD=your_email_password
+   ```
+
+   Replace `send_email_from_this_user` and `your_email_password` with your actual Values.
+
+4. Run the application:
+
+   ```bash
+   npm run dev
+   ```
+
+   The application will be accessible at [http://localhost:3000](http://localhost:3000) by default.
+
+## Cron Job
+
+A scheduled cron job is hosted on [cron-job.org](https://cron-job.org). This job runs at specified intervals to update prices and send notifications to users.
+
+## Live Demo
+
+Check out the live demo of Pricewise hosted at [![Vercel](https://img.shields.io/badge/Vercel-000?logo=vercel&logoColor=white)](https://pricewise-xi-seven.vercel.app/)
+
+---
